@@ -1,16 +1,18 @@
-var randomColor = require('randomcolor');
+import randomColor from 'randomcolor'
 
-export type Label = {
+export interface Label {
   name: string
   color: string
 }
 
-export async function getLabelsFromOwners(owners: Set<string>) {
-  let labels: Label[] = []
-  for (let owner in owners) {
+export async function getLabelsFromOwners(
+  owners: Set<string>
+): Promise<Label[]> {
+  const labels: Label[] = []
+  for (const owner in owners) {
     labels.push({
       name: `${owner}`,
-      color: randomColor(),
+      color: randomColor()
     })
   }
   return labels

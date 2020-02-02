@@ -28,7 +28,9 @@
     "@actions/core": "^1.2.2",
     "@actions/github": "^2.1.0",
     "@octokit/auth": "^1.1.1",
+    "@octokit/rest": "^16.41.1",
     "@octokit/webhooks": "^7.0.0",
+    "@types/randomcolor": "^0.5.3",
     "codeowners": "^4.1.1",
     "codeowners-api": "github:code-owners/codeowners-api#master",
     "randomcolor": "^0.5.4"
