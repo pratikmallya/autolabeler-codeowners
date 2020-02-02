@@ -3,7 +3,7 @@ import * as github from '@actions/github'
 
 export async function getChangedFiles(
   context: Context,
-  octokit: github.GitHub
+  client: github.GitHub
 ): Promise<string[]> {
   if (!['push', 'pull_request'].includes(context.eventName)) {
     throw new Error(`Unexpected event: ${context.eventName}`)
@@ -12,7 +12,7 @@ export async function getChangedFiles(
   // Note: the per_page param is set to the max value for a single page (100)
   // TODO: implement pagination to get all files if > 100
   // TODO: use graphql api
-  const files = await octokit.pulls.listFiles({
+  const files = await client.pulls.listFiles({
     owner: context.issue.owner,
     repo: context.issue.repo,
     // eslint-disable-next-line @typescript-eslint/camelcase
