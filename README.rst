@@ -5,14 +5,25 @@ Adds labels to PR's based on ``CODEOWNERS``. Useful in monorepos where there
 can be a ton of concurrent users and it might get hard to find the
 relevant PR for a particular team.
 
-Tasklist
---------
-https://github.com/code-owners/codeowners-api
+Example usage
+-------------
 
-- read payload from webhook
-  - might be easier to query the PR object for all the changed files
+The following is a fully functional `Github Workflow`_. Note that 
+``githubToken`` is a `Github secret`_ that needs to be added to the Github repo.
 
-- transform payload into list of CODEOWNERS
-- transform list of CODEOWNERS into labels
-- add labels to the repo
-  - create labels if they don't exist 
+.. code:: yaml
+
+  on: [pull_request]
+  jobs:
+    autolabeler-codeowners:
+      runs-on: ubuntu-latest
+      name: Publish docs to confluence
+      steps:
+      - uses: actions/checkout@v1
+      - name: publish to confluence
+        uses: pratikmallya/autolabeler-codeowners@master
+        with:
+          githubToken: ${{ secrets.githubToken }}
+
+.. _Github secret: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
+.. _Github Workflow: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow
