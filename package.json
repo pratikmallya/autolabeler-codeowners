@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
-  "version": "0.0.0",
+  "name": "autolabeler-codeowners",
+  "version": "0.0.1",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Label PRs based on CODEOWNERS file",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,17 +15,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/pratikmallya/autolabeler-codeowners.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "Pratik Mallya",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.0"
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^2.1.0",
+    "@octokit/auth": "^1.1.1",
+    "@octokit/webhooks": "^7.0.0",
+    "codeowners-api": "git+ssh://git@github.com/code-owners/codeowners-api.git"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
