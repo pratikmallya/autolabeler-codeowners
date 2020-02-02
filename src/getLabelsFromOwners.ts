@@ -7,9 +7,9 @@ export type Label = {
 
 export async function getLabelsFromOwners(owners: Set<string>) {
   let labels: Label[] = []
-  for  (let owner in owners) {
+  for (let owner in owners) {
     labels.push({
-      name: `codeowner-${owner}`,
+      name: `${owner}`,
       color: randomColor(),
     })
   }
