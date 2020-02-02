@@ -1,31 +1,16 @@
 import { Context } from '@actions/github/lib/context'
+import Codeowners from 'codeowners';
     
-export async function getCodeOwners(context: Context, token: string) {
-  const repoParams = {repo: context.repo.repo, owner: context.repo.owner}
-  const authParams = {type: 'token', token: token}
-
-  const codeOwnersApi = new Codeowner(repoParams);
-
-  let codeownersmap = codeOwnersApi.getCodeownersMap()
-  let codeowners:Set<string> = new Set([""]) 
-  for (let entry of codeownersmap) {
-    codeowners.add(entry.owners)
+export async function getCodeOwnersFromPaths(paths: string[]) {
+  const repos = new Codeowners();
+  let owners: Set<string> = new Set
+  for (let path in paths) {
+    let owner = repos.getOwner(path)
+    for (let o in owner) {
+      owners.add(o)
+    }
+  }
+  return owners
 }
 
-}
 
-const mapCodeownersFile = (codeownersFileContent: string): MappedData[] => {
-  return codeownersFileContent
-      .split('\n')
-      .filter(x => x && !x.startsWith('#'))
-      .map(x => {
-          const line = x.trim();
-          const [path, ...owners] = line.split(/\s+/);
-          return {path, owners};
-      });
-};
-
-type MappedData = {
-  path: string;
-  owners: string[];
-};
