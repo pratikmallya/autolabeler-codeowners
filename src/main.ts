@@ -23,7 +23,6 @@ async function run(): Promise<void> {
 
     // apply the set of labels to the PR
     await applyLabels(github.context, client, labels)
-
   } catch (error) {
     core.setFailed(error.message)
   }
