@@ -12,7 +12,10 @@ export async function getLabelsFromOwners(
   for (const owner of owners) {
     labels.push({
       name: `${owner}`,
-      color: randomColor()
+      // From the documentation: https://octokit.github.io/rest.js/#octokit-routes-issues-create-label
+      // > The hexadecimal color code for the label, without the leading #
+      // randomcolor() returns a color code with a '#' prefix, so we remove it
+      color: randomColor().substr(1)
     })
   }
   return labels
