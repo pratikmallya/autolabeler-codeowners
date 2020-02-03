@@ -8,8 +8,8 @@ export interface Label {
 export async function getLabelsFromOwners(
   owners: Set<string>
 ): Promise<Label[]> {
-  const labels: Label[] = []
-  for (const owner in owners) {
+  let labels: Label[] = []
+  for (const owner of owners) {
     labels.push({
       name: `${owner}`,
       color: randomColor()
