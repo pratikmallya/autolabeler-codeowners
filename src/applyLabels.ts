@@ -7,7 +7,7 @@ export async function applyLabels(
   context: Context,
   client: github.GitHub,
   labels: Label[]
-): Promise<octokit.Response<octokit.IssuesAddLabelsResponse>> {
+): Promise<void> {
   // create labels if they don't exist
   const p: Promise<octokit.Response<octokit.IssuesCreateLabelResponse>>[] = []
   try {
@@ -30,11 +30,15 @@ export async function applyLabels(
   }
 
   // apply labels to the PR
-  return client.issues.addLabels({
+  const labelsAll: string[] = labels.map(elem => elem.name)
+  if (labelsAll.length === 0) {
+    return
+  }
+  await client.issues.addLabels({
     owner: context.issue.owner,
     repo: context.issue.repo,
     // eslint-disable-next-line @typescript-eslint/camelcase
     issue_number: context.issue.number,
-    labels: labels.map(elem => elem.name)
+    labels: labelsAll
   })
 }
