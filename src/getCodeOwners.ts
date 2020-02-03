@@ -6,9 +6,9 @@ export async function getCodeOwnersFromPaths(
   const repos = new Codeowners()
   const owners: Set<string> = new Set()
   for (const path of paths) {
-    const owner = repos.getOwner(path)
-    for (const o of owner) {
-      owners.add(o)
+    const pathowners = repos.getOwner(path)
+    for (const pathowner of pathowners) {
+      owners.add(pathowner)
     }
   }
   return owners
