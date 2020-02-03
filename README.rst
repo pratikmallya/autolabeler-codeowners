@@ -42,13 +42,15 @@ Release Process
 (TODO: *automate*)
 
 - checkout to the release branch e.g. ``git checkout -b release/v1``
+  
   a. If release branch already exists, ``git checkout release/v1`` and then 
      pull in any new changes you need e.g. ``git merge master``
+
 - uncomment ``./node_modules`` and ``./lib`` from ``.gitignore``, this allows us 
   to commit them
 - run ``npm prune --production`` to prune the modules
-- commit to branch  ``git commit -am "ADD: readying for release" ``
+- commit to branch  ``git commit -am "ADD: readying for release"``
 - push branch
-- UPDATE: `Github Marketplace`_
+- update `Github Marketplace`_
 
 .. _Github Marketplace: https://github.com/marketplace/actions/autolabeler-codeowners
