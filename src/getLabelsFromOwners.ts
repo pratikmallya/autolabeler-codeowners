@@ -9,7 +9,7 @@ export async function getLabelsFromOwners(
   owners: Set<string>
 ): Promise<Label[]> {
   const labels: Label[] = []
-  for (const owner in owners) {
+  for (const owner of owners) {
     labels.push({
       name: `${owner}`,
       color: randomColor()
