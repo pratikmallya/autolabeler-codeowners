@@ -56,6 +56,7 @@ Release Process
   to commit them
 - run ``npm prune --production`` to prune the modules
 - compile JS with ``npm run build``
+- ``git add lib/`` to add any newly generated JS files
 - commit to branch  ``git commit -am "ADD: readying for release"``
 - push branch
 - update `Github Marketplace`_

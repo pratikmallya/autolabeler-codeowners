@@ -1,0 +1,4 @@
+# fake codeowners used for testing
+*   @gatsby
+src @org-teamA
+src/b/c @org-teamB @org-teamC
