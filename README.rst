@@ -1,6 +1,4 @@
 .. image:: https://github.com/pratikmallya/autolabeler-codeowners/workflows/build-test/badge.svg?branch=master
-    :target: https://travis-ci.org/travis-ci/travis-web
-
 
 autolabeler-codeowners 
 ======================
