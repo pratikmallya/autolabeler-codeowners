@@ -10,8 +10,9 @@ relevant PR for a particular team.
 Example usage
 -------------
 
-The following is a fully functional `Github Workflow`_. Note that 
-``githubToken`` is a `Github secret`_ that needs to be added to the Github repo.
+The following is a fully functional `Github Workflow`_. Note that a Github 
+Oauth token needs to be added to the Github repo as a `Github secret`_ with 
+the name ``githubToken``. 
 
 .. code:: yaml
 
