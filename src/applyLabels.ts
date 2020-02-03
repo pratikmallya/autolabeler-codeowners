@@ -6,12 +6,15 @@ import {Label} from './getLabelsFromOwners'
 export async function applyLabels(
   context: Context,
   client: github.GitHub,
-  labels: Label[]
+  labels: Set<Label>
 ): Promise<void> {
   // create labels if they don't exist
   const p: Promise<octokit.Response<octokit.IssuesCreateLabelResponse>>[] = []
+  // store labels in a list; will be used later
+  const labelsAll: string[] = []
   try {
     for (const label of labels) {
+      labelsAll.push(label.name)
       p.push(
         client.issues.createLabel({
           owner: context.issue.owner,
@@ -30,7 +33,7 @@ export async function applyLabels(
   }
 
   // apply labels to the PR
-  const labelsAll: string[] = labels.map(elem => elem.name)
+  // don't even try if no labels
   if (labelsAll.length === 0) {
     return
   }
