@@ -1,4 +1,4 @@
-autolabeler-codeowners
+autolabeler-codeowners 
 ======================
 
 Adds labels to PR's based on ``CODEOWNERS``. Useful in monorepos where there 
@@ -27,3 +27,26 @@ The following is a fully functional `Github Workflow`_. Note that
 
 .. _Github secret: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets
 .. _Github Workflow: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow
+
+Deployment
+----------
+The nodejs modules (in ``./node_modules``) and compiled JS (in ``./lib``) must 
+be committed to the release branches but NOT to master (to keep master 
+branch clean)
+
+Release Process
+===============
+
+(TODO: *automate*)
+
+- checkout to the release branch e.g. ``git checkout -b release/v1``
+  a. If release branch already exists, ``git checkout release/v1`` and then 
+     pull in any new changes you need e.g. ``git merge master``
+- uncomment ``./node_modules`` and ``./lib`` from ``.gitignore``, this allows us 
+  to commit them
+- run ``npm prune --production`` to prune the modules
+- commit to branch  ``git commit -am "ADD: readying for release" ``
+- push branch
+- UPDATE: `Github Marketplace`_
+
+.. _Github Marketplace: https://github.com/marketplace/actions/autolabeler-codeowners
