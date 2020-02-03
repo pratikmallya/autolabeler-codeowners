@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import {getChangedFiles} from './getChangedFiles'
 import * as github from '@actions/github'
-import {getCodeOwnersFromPaths} from './getCodeOwners'
+import {getCodeOwnersFromPaths} from './getCodeOwnersFromPaths'
 import {getLabelsFromOwners, Label} from './getLabelsFromOwners'
 import {applyLabels} from './applyLabels'
 
