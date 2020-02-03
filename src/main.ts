@@ -15,11 +15,11 @@ async function run(): Promise<void> {
 
     // paths -> set of codeowners for the paths
     const owners: Set<string> = await getCodeOwnersFromPaths(paths)
-    core.info(`Obtained owners for paths: ${owners}`)
+    core.info(`Obtained owners for paths: ${Array.from(owners)}`)
 
     // set of codeowners -> set of labels
     const labels: Set<Label> = await getLabelsFromOwners(owners)
-    core.info(`Obtained labels for change: ${labels}`)
+    core.info(`Obtained labels for change: ${Array.from(labels)}`)
 
     // apply the set of labels to the PR
     await applyLabels(github.context, client, labels)
