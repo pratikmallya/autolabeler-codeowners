@@ -37,6 +37,11 @@ The nodejs modules (in ``./node_modules``) and compiled JS (in ``./lib``) must
 be committed to the release branches but NOT to master (to keep master 
 branch clean)
 
+Testing
+-------
+* install dev deps using ``npm install --save-dev``
+* run ``npm run test``
+
 Release Process
 ===============
 
@@ -50,6 +55,7 @@ Release Process
 - uncomment ``./node_modules`` and ``./lib`` from ``.gitignore``, this allows us 
   to commit them
 - run ``npm prune --production`` to prune the modules
+- compile JS with ``npm run build``
 - commit to branch  ``git commit -am "ADD: readying for release"``
 - push branch
 - update `Github Marketplace`_
