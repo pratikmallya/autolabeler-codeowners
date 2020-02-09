@@ -48,7 +48,7 @@ Known Limitations
 
 - *no retry logic*: In practice not a huge deal as most PR's have multiple 
   pushes and thus the workflow is triggered several times for the same PR.
-- *only detects the first 100 files in a PR*. This has not been a problem in 
+- *only detects the first 100 files in a PR*: This has not been a problem in 
   practice since most PR's only make large changes within code-owned teams.
   Cross-codeowned, large changes have been rare. If this is a problem, feel 
   free to open a PR/Issue with details!
