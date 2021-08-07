@@ -63,9 +63,9 @@ Release Process
 
 (TODO: *automate*)
 
-- checkout to the release branch e.g. ``git checkout -b release/v1``
+- checkout to the release branch e.g. ``git checkout -b releases/v1``
 
-  a. If release branch already exists, ``git checkout release/v1`` and then
+  a. If release branch already exists, ``git checkout releases/v1`` and then
      pull in any new changes you need e.g. ``git merge master``
 
 - uncomment ``./node_modules`` and ``./lib`` from ``.gitignore``, this allows us
