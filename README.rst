@@ -1,18 +1,18 @@
 .. image:: https://github.com/pratikmallya/autolabeler-codeowners/workflows/build-test/badge.svg?branch=master
 
-autolabeler-codeowners 
+autolabeler-codeowners
 ======================
 
-Adds labels to PR's based on ``CODEOWNERS``. Useful in monorepos where there 
+Adds labels to PR's based on ``CODEOWNERS``. Useful in monorepos where there
 can be a ton of concurrent users and it might get hard to find the
 relevant PR for a particular team.
 
 Example usage
 -------------
 
-The following is a fully functional `Github Workflow`_. Note that a Github 
-Oauth token needs to be added to the Github repo as a `Github secret`_ with 
-the name ``githubToken``. 
+The following is a fully functional `Github Workflow`_. Note that a Github
+Oauth token needs to be added to the Github repo as a `Github secret`_ with
+the name ``githubToken``.
 
 .. code:: yaml
 
@@ -24,7 +24,7 @@ the name ``githubToken``.
       steps:
       - uses: actions/checkout@v1
       - name: publish to confluence
-        uses: pratikmallya/autolabeler-codeowners@master
+        uses: pratikmallya/autolabeler-codeowners@release/v1
         with:
           githubToken: ${{ secrets.githubToken }}
 
@@ -33,8 +33,8 @@ the name ``githubToken``.
 
 Deployment
 ----------
-The nodejs modules (in ``./node_modules``) and compiled JS (in ``./lib``) must 
-be committed to the release branches but NOT to master (to keep master 
+The nodejs modules (in ``./node_modules``) and compiled JS (in ``./lib``) must
+be committed to the release branches but NOT to master (to keep master
 branch clean)
 
 Testing
@@ -46,14 +46,14 @@ Testing
 Known Limitations
 -----------------
 
-- *no retry logic*: In practice not a huge deal as most PR's have multiple 
+- *no retry logic*: In practice not a huge deal as most PR's have multiple
   pushes and thus the workflow is triggered several times for the same PR.
-- *only detects the first 100 files in a PR*: This has not been a problem in 
+- *only detects the first 100 files in a PR*: This has not been a problem in
   practice since most PR's only make large changes within code-owned teams.
-  Cross-codeowned, large changes have been rare. If this is a problem, feel 
+  Cross-codeowned, large changes have been rare. If this is a problem, feel
   free to open a PR/Issue with details!
-- *does not work for PR's from forked repos for private repos*: this is simply 
-  because the action is not triggered by Github so there is realistically no 
+- *does not work for PR's from forked repos for private repos*: this is simply
+  because the action is not triggered by Github so there is realistically no
   way to fix it. `Github promises to fix this by GA`_
 
 .. _Github promises to fix this by GA: https://github.community/t5/GitHub-Actions/Github-Workflow-not-running-from-pull-request-from-forked/m-p/33484/highlight/true#M1524
@@ -64,11 +64,11 @@ Release Process
 (TODO: *automate*)
 
 - checkout to the release branch e.g. ``git checkout -b release/v1``
-  
-  a. If release branch already exists, ``git checkout release/v1`` and then 
+
+  a. If release branch already exists, ``git checkout release/v1`` and then
      pull in any new changes you need e.g. ``git merge master``
 
-- uncomment ``./node_modules`` and ``./lib`` from ``.gitignore``, this allows us 
+- uncomment ``./node_modules`` and ``./lib`` from ``.gitignore``, this allows us
   to commit them
 - run ``npm prune --production`` to prune the modules
 - compile JS with ``npm run build``
