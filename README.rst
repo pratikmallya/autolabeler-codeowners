@@ -24,7 +24,7 @@ the name ``githubToken``.
       steps:
       - uses: actions/checkout@v1
       - name: publish to confluence
-        uses: pratikmallya/autolabeler-codeowners@releases/v1
+        uses: pratikmallya/autolabeler-codeowners@release/v1
         with:
           githubToken: ${{ secrets.githubToken }}
 
