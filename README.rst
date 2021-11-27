@@ -20,10 +20,10 @@ the name ``githubToken``.
   jobs:
     autolabeler-codeowners:
       runs-on: ubuntu-latest
-      name: Publish docs to confluence
+      name: PR + CODEOWNERS Workflows
       steps:
       - uses: actions/checkout@v1
-      - name: publish to confluence
+      - name: Add CODEOWNER Label To PR
         uses: pratikmallya/autolabeler-codeowners@releases/v1
         with:
           githubToken: ${{ secrets.githubToken }}
